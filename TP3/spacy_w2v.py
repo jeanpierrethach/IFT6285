@@ -1,12 +1,12 @@
 import spacy
 
 # Need to run this line to convert the gensim model into spacy format
-# python -m spacy init-model en ./models/spacy-min-count-100 --vectors-loc models/gensim-model-min-count-100.txt.gz
+# python3 -m spacy init-model en ./models/spacy-min-count-100 --vectors-loc models/gensim-model-min-count-100.txt.gz
 
 def computeNeighboringWords(model, top=10, row_count="all", write=False, threshold=0.5):
 
 	# Load spacy model
-	nlp = spacy.load(".bin/" + model)
+	nlp = spacy.load("./models/" + model)
 
 	# Fetch list of words from vocab
 	vocab = list(nlp.vocab.strings)
@@ -77,4 +77,4 @@ def computeNeighboringWords(model, top=10, row_count="all", write=False, thresho
 	with open("output/out-" + model + ".txt", "w") as filehandle:
 		filehandle.writelines("%s\n" % line for line in output)
 
-computeNeighboringWords(model="spacy-min-count-10", top=12, row_count=100, threshold=0.42)
+computeNeighboringWords(model="spacy-min-count-100", top=12, row_count=100, threshold=0.42)

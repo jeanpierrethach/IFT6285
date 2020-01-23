@@ -16,11 +16,11 @@ class Corpus(object):
     		yield line.split()
 
 # Train model
-sentences = Corpus('data/train_posts.txt')
+sentences = Corpus('train_posts.csv')
 start = time.time()
 model = gensim.models.Word2Vec(sentences, min_count=10)
 end = time.time()
 print(end - start)
 
 # Save model to convert to spacy
-model.wv.save_word2vec_format("models/gensim-model-min-count-10.txt")
+model.wv.save_word2vec_format("models/gensim-model-min-count-100.txt")
